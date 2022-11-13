@@ -98,14 +98,12 @@ sudo apt install postgresql
 export PATH=/usr/lib/postgresql/[version, probably 12]/bin:$PATH
 ```
 
-#### Install jdk
+#### Install JDK
 
-> Probably `openjdk`
-> 
-> Might only work in Ubuntu, search an `openjdk` package that works on your distro and install that. Some scripts might need to be edited accordingly.
+> Might only work in Ubuntu, search an `openjdk` package that works on your distro and install that. Some scripts might need to be edited accordingly. JDK 8 should be used, as the given java code appears to have depricated functions and will not compile with newer versions.
 
 ```
-sudo apt install default-jdk
+sudo apt install openjdk-8-jdk
 ```
 
 
