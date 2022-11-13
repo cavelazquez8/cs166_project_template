@@ -1,4 +1,12 @@
-# Fall CS166 Final Project
+# Fall CS166 Final Project Template
+
+Template for the final project of CS166, Fall 2022 at UCR.
+
+Contains unmodified code from the given file `project.zip`, as well as the pdf file containing the project's instructions.
+
+This file, `README.md`, contains many useful instructions for how to use ssh and VS Code, to make working on this project much easier.
+
+Click `Use this template` and create your own (private) repository to use it. 
 
 ## Use Instructions
 
