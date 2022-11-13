@@ -1,6 +1,6 @@
 # Fall CS166 Final Project Template
 
-## Written by Connor Hardenburgh
+*By Connor Hardenburgh*
 
 Template for the final project of CS166, Fall 2022 at UCR.
 
