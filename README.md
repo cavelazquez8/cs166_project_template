@@ -8,6 +8,8 @@ This file, `README.md`, contains many useful instructions for how to use ssh and
 
 Click `Use this template` and create your own (private) repository to use it. 
 
+**I HIGHLY SUGGEST YOU NAME THE REPO `project` AS THAT WILL MAKE SURE YOUR FOLDER NAME IS ALWAYS `project`**
+
 ## Use Instructions
 
 ### How to access a lab machine to work on the project using VS Code:
