@@ -75,9 +75,11 @@ Click `New SSH key` and copy the text inside the local file you created in the `
 
 ## Dependencies, if not running on a lab machine
 
-> Differences in directory structure between the lab and normal machines should make this useless
+> ~~Differences in directory structure between the lab and normal machines should make this useless~~
 > 
-> If a way to use relative filepaths with SQL is found, this will become relevant
+> ~~If a way to use relative filepaths with SQL is found, this will become relevant~~
+>
+>> I have done the testing, and this is totaly possible. 
 
 ### For Ubuntu on WSL
 
