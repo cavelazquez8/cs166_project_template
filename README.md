@@ -28,7 +28,7 @@ You are now in the lab machine! VS Code might ask what OS is being run, select L
 
 VS Code's GUI makes using git much simpler than through the terminal, which is great.
 
-Either press `Ctrl-Shift-E` or click the icon with two sheets of paper at the top left of VS Code. If you do not have a folder currently opened, there should be a button which says `Clone Repository`. Click it. Enter the HTTPS link to the repo (`https://github.com/siaech/cs166_project.git`) and press enter. Enter the directory you want this repo to be placed in, the default should be fine. 
+Either press `Ctrl-Shift-E` or click the icon with two sheets of paper at the top left of VS Code. If you do not have a folder currently opened, there should be a button which says `Clone Repository`. Click it. Enter the HTTPS link to your repo and press enter. Enter the directory you want this repo to be placed in, the default should be fine. 
 
 VS Code may ask you to link it with your Github account at some point, do so. 
 
