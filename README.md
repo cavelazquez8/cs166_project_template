@@ -79,7 +79,7 @@ Click `New SSH key` and copy the text inside the local file you created in the `
 > 
 > ~~If a way to use relative filepaths with SQL is found, this will become relevant~~
 >
->> I have done the testing, and this is totaly possible. 
+>> I have done the testing, and this is totally possible. 
 
 ### For Ubuntu on WSL
 
