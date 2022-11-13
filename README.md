@@ -1,5 +1,7 @@
 # Fall CS166 Final Project Template
 
+## Written by Connor Hardenburgh
+
 Template for the final project of CS166, Fall 2022 at UCR.
 
 Contains unmodified code from the given file `project.zip`, as well as the pdf file containing the project's instructions.
