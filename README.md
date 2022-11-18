@@ -100,9 +100,16 @@ sudo apt install postgresql
 export PATH=/usr/lib/postgresql/[version, probably 12]/bin:$PATH
 ```
 
+> It is also a good idea to edit your `.bashrc` so you don't need to update your path every time you start Linux, by editing `~/.bashrc` and adding these lines to the bottom:
+
+```
+# custom
+export PATH="$PATH:/usr/lib/postgresql/12/bin"
+```
+
 #### Install JDK
 
-> Might only work in Ubuntu, search an `openjdk` package that works on your distro and install that. Some scripts might need to be edited accordingly. JDK 8 should be used, as the given java code appears to have depricated functions and will not compile with newer versions.
+> If not available, search an openjdk package that works on your distro and install that. `java/scripts/compile.sh` might need to be edited accordingly. JDK 8 should be used, as the given java code appears to have depricated functions and will not compile with newer versions (Tested with JDK 11).
 
 ```
 sudo apt install openjdk-8-jdk
