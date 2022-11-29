@@ -215,7 +215,7 @@ public class Retail {
    }
 
    /**
-    * Method to close the physical connection if it is open.
+    * aMethod to close the physical connection if it is open.
     */
    public void cleanup(){
       try{
