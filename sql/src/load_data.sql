@@ -1,10 +1,10 @@
 COPY Users
-FROM '/home/user/cs166_project_template/data/users.csv'
+FROM 'users.csv'
 WITH DELIMITER ',' CSV HEADER;
 ALTER SEQUENCE users_userID_seq RESTART 101;
 
 COPY Store
-FROM '/home/user/cs166_project_template/data/stores.csv'
+FROM 'stores.csv'
 WITH DELIMITER ',' CSV HEADER;
 
 COPY Product
@@ -12,21 +12,21 @@ FROM '/home/user/cs166_project_template/data/products.csv'
 WITH DELIMITER ',' CSV HEADER;
 
 COPY Warehouse
-FROM '/home/user/cs166_project_template/data/warehouse.csv'
+FROM 'warehouse.csv'
 WITH DELIMITER ',' CSV HEADER;
 
 COPY Orders
-FROM '/home/user/cs166_project_template/data/orders.csv'
+FROM 'orders.csv'
 WITH DELIMITER ',' CSV HEADER;
 ALTER SEQUENCE orders_orderNumber_seq RESTART 501;
 
 
 COPY ProductSupplyRequests
-FROM '/home/user/cs166_project_template/data/productSupplyRequests.csv'
+FROM 'productSupplyRequests.csv'
 WITH DELIMITER ',' CSV HEADER;
 ALTER SEQUENCE productsupplyrequests_requestNumber_seq RESTART 11;
 
 COPY ProductUpdates
-FROM '/home/user/cs166_project_template/data/productUpdates.csv'
+FROM 'productUpdates.csv'
 WITH DELIMITER ',' CSV HEADER;
 ALTER SEQUENCE productupdates_updateNumber_seq RESTART 51;
