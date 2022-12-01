@@ -458,7 +458,15 @@ public class Retail {
 		System.err.println (e.getMessage());
 	}
    }
-   public static void viewRecentOrders(Retail esql) {}
+   public static void viewRecentOrders(Retail esql) {
+	try {
+	String query = String.format("SELECT o.storeID, s.name, o.productName, o.unitsOrdered, o.orderTime FROM Store s, Orders o WHERE o.storeID = s.storeID AND o.customerID = '%s' ORDER BY o.orderTime DESC LIMIT 5", userID);
+	int userNum = esql.executeQueryAndPrintResult(query);
+}
+    catch (Exception e) {
+        System.err.println (e.getMessage());
+        }
+   }
    public static void updateProduct(Retail esql) {}
    public static void viewRecentUpdates(Retail esql) {}
    public static void viewPopularProducts(Retail esql) {}
