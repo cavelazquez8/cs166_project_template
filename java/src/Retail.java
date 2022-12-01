@@ -413,7 +413,15 @@ public class Retail {
 	}
    }
    public static void viewProducts(Retail esql) {
-     
+     try{
+		String query = "SELECT *  FROM Product WHERE Product.storeID = ";
+		System.out.print("\tEnter Store ID: ");
+     String input = in.readLine();
+		query +=input;
+		esql.executeQueryAndPrintResult(query);
+	} catch (Exception e) {
+		System.err.println (e.getMessage());
+	}
 	}
    public static void placeOrder(Retail esql) {}
    public static void viewRecentOrders(Retail esql) {}
