@@ -509,7 +509,7 @@ public class Retail {
    
       }
       else{
-         System.out.print("You're not a manager");
+         System.out.println("You're not a manager");
       }
       } catch(Exception e){
          System.err.println(e.getMessage());
@@ -521,8 +521,17 @@ public class Retail {
    public static void viewRecentUpdates(Retail esql) {
       try{
    
-         String query = String.format("SELECT * FROM ProductUpdates ORDER BY updatedOn DESC LIMIT 5", userID);
-         int userNum = esql.executeQueryAndPrintResult(query);
+      String query = String.format("SELECT type FROM Users WHERE userID = '%s'", userID);
+      List<List<String>> type = esql.executeQueryAndReturnResult(query);
+      String userType = type.get(0).get(0);
+      userType = userType.trim();
+      if(userType.equals("manager")){
+         String query1 = String.format("SELECT * FROM ProductUpdates ORDER BY updatedOn DESC LIMIT 5", userID);
+         int userNum = esql.executeQueryAndPrintResult(query1);
+      }
+      else{
+         System.out.println("You're not a manager.");
+      }
       }catch(Exception e){
            System.err.println (e.getMessage());
       }
