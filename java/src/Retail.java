@@ -447,7 +447,7 @@ public class Retail {
          double dist = esql.calculateDistance(Double.parseDouble(userLat),Double.parseDouble(userLong), Double.parseDouble(storeLat),Double.parseDouble(storeLong) );
 
          if(dist < 30){
-            String queryInsertProduct = String.format("INSERT INTO Orders(customerID, storeID, productName, unitsOrdered, orderTime) VALUES ('%s','%s','%s','%s',now())", userID, storeID, productName, numUnits );
+            String queryInsertProduct = String.format("INSERT INTO Orders( customerID, storeID, productName, unitsOrdered, orderTime) VALUES ('%s','%s','%s','%s',now())", userID, storeID, productName, numUnits );
             esql.executeUpdate(queryInsertProduct);
          } 
          else{
@@ -467,8 +467,67 @@ public class Retail {
         System.err.println (e.getMessage());
         }
    }
-   public static void updateProduct(Retail esql) {}
-   public static void viewRecentUpdates(Retail esql) {}
+
+   public static void updateProduct(Retail esql) {
+      try{
+      String query = String.format("SELECT type FROM Users WHERE userID = '%s'", userID);
+      List<List<String>> type = esql.executeQueryAndReturnResult(query);
+      String userType = type.get(0).get(0);
+      userType = userType.trim();
+      
+
+      if(userType.equals("manager")){
+         System.out.print("Store ID: " );
+         String storeID = in.readLine();
+         System.out.print("Product Name: " );
+         String productName = in.readLine();
+         System.out.print("Updated Number of Units: " );
+         String numUnits = in.readLine();
+         System.out.print("Updated Price per Unit: " );
+         String priceUnit = in.readLine();
+
+         String queryGetStores = String.format("SELECT * FROM Store WHERE storeID = '%s' AND managerID = '%s'", storeID, userID);
+         int storeNum = esql.executeQuery(queryGetStores);
+         if(storeNum > 0 ){
+            String queryGetProducts = String.format("SELECT * FROM Product WHERE productName = '%s'", productName); 
+            int productNum = esql.executeQuery(queryGetProducts);
+            if(productNum > 0){
+               String queryUpdate = String.format("UPDATE Product SET numberOfUnits = '%s', pricePerUnit = '%s' WHERE storeID = '%s' AND productName = '%s'", numUnits, priceUnit, storeID, productName);
+               esql.executeUpdate(queryUpdate);
+
+               String queryInsert = String.format("INSERT INTO ProductUpdates(managerID, storeID, productName, updatedOn) VALUES ('%s', '%s', '%s', now())", userID, storeID, productName);
+               esql.executeUpdate(queryInsert);
+            }
+            else{
+               System.out.println("The selected product does not exist in this store.");
+            }
+
+         }
+         else{
+            System.out.println("You're not the manager of this store");
+         }
+   
+      }
+      else{
+         System.out.print("You're not a manager");
+      }
+      } catch(Exception e){
+         System.err.println(e.getMessage());
+      }
+   }
+   
+
+   
+   public static void viewRecentUpdates(Retail esql) {
+      try{
+   
+         String query = String.format("SELECT * FROM ProductUpdates ORDER BY updatedOn DESC LIMIT 5", userID);
+         int userNum = esql.executeQueryAndPrintResult(query);
+      }catch(Exception e){
+           System.err.println (e.getMessage());
+      }
+      
+   }
    public static void viewPopularProducts(Retail esql) {}
    public static void viewPopularCustomers(Retail esql) {}
    public static void placeProductSupplyRequests(Retail esql) {}
