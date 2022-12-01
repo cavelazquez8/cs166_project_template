@@ -31,6 +31,7 @@ import java.lang.Math;
  *
  */
 public class Retail {
+   public static String userID; 
 
    // reference to physical database connection.
    private Connection _connection = null;
@@ -387,8 +388,12 @@ public class Retail {
 
          String query = String.format("SELECT * FROM USERS WHERE name = '%s' AND password = '%s'", name, password);
          int userNum = esql.executeQuery(query);
-	 if (userNum > 0)
+         String query2 = String.format("SELECT userID FROM USERS WHERE name = '%s' AND password = '%s'", name, password);
+	 if (userNum > 0){
+      List<List<String>> userResult = esql.executeQueryAndReturnResult(query2);
+      userID = userResult.get(0).get(0);
 		return name;
+    }
          return null;
       }catch(Exception e){
          System.err.println (e.getMessage ());
@@ -398,8 +403,18 @@ public class Retail {
 
 // Rest of the functions definition go in here
 
-   public static void viewStores(Retail esql) {}
-   public static void viewProducts(Retail esql) {}
+   public static void viewStores(Retail esql) {
+       try {
+		String query = String.format("SELECT DISTINCT(s.storeID), s.name, calculate_distance(u.latitude, u.longitude, s.latitude, s.longitude) as dist FROM users u, store s WHERE calculate_distance(u.latitude, u.longitude, s.latitude, s.longitude) < 30 AND u.userID = '%s'", userID);
+		esql.executeQueryAndPrintResult(query);
+	} catch(Exception e){
+		System.err.println (e.getMessage());
+		System.out.println ("No stores less than 30 miles nearby");
+	}
+   }
+   public static void viewProducts(Retail esql) {
+     
+	}
    public static void placeOrder(Retail esql) {}
    public static void viewRecentOrders(Retail esql) {}
    public static void updateProduct(Retail esql) {}
