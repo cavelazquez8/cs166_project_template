@@ -8,7 +8,7 @@ FROM 'stores.csv'
 WITH DELIMITER ',' CSV HEADER;
 
 COPY Product
-FROM '/home/user/cs166_project_template/data/products.csv'
+FROM 'products.csv'
 WITH DELIMITER ',' CSV HEADER;
 
 COPY Warehouse
