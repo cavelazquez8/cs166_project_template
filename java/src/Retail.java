@@ -423,7 +423,41 @@ public class Retail {
 		System.err.println (e.getMessage());
 	}
 	}
-   public static void placeOrder(Retail esql) {}
+   public static void placeOrder(Retail esql) {
+      try{
+         System.out.print("Store ID: ");
+         String storeID = in.readLine();
+
+         System.out.print("Product name: ");
+         String productName = in.readLine();
+
+         System.out.print("Number of Units: ");
+         String numUnits = in.readLine();
+
+         String query = String.format("SELECT latitude, longitude FROM Store WHERE storeID = '%s'", storeID);
+         String query2 = String.format("SELECT latitude, longitude FROM USERS WHERE userID = '%s'", userID);
+   
+         List<List<String>> storeLoc = esql.executeQueryAndReturnResult(query);
+         List<List<String>> userLoc = esql.executeQueryAndReturnResult(query2);
+
+         String storeLat = storeLoc.get(0).get(0);
+         String storeLong = storeLoc.get(0).get(1);
+         String userLat = userLoc.get(0).get(0);
+         String userLong = userLoc.get(0).get(1);
+         double dist = esql.calculateDistance(Double.parseDouble(userLat),Double.parseDouble(userLong), Double.parseDouble(storeLat),Double.parseDouble(storeLong) );
+
+         if(dist < 30){
+            String queryInsertProduct = String.format("INSERT INTO Orders(customerID, storeID, productName, unitsOrdered, orderTime) VALUES ('%s','%s','%s','%s',now())", userID, storeID, productName, numUnits );
+            esql.executeUpdate(queryInsertProduct);
+         } 
+         else{
+            System.out.println("The selected store is not within 30 miles.");
+         }
+      }
+      catch (Exception e) {
+		System.err.println (e.getMessage());
+	}
+   }
    public static void viewRecentOrders(Retail esql) {}
    public static void updateProduct(Retail esql) {}
    public static void viewRecentUpdates(Retail esql) {}
